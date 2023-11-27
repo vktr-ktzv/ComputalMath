@@ -157,6 +157,6 @@ PrintGraph(Norms)
 LinalgTAu = GetOptTauByLinalg(A)
 X, Norms = SolveByMPI(A, f,LinalgTAu , Eps)
 dX = norm(X - X0, ord=2)
-print("\n\n", "Метод Крылова Tau =", LinalgTAu, "\nX:\n", X, \
+print("\n\n", "Linalg Tau =", LinalgTAu, "\nX:\n", X, \
         "\n\nНорма разницы ||X - X0||:", format(dX, '.10f'))
 PrintGraph(Norms)
