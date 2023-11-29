@@ -1,0 +1,32 @@
+import numpy as np 
+
+a = 0.000333
+b = 6000
+n = 16000 
+
+def Sipson(f, a: float, b: float, n: int) -> float:
+    assert a < b
+    
+    h = (b - a) / float(n)
+    ans = 0.0
+
+    for i in range(0, n, 2):
+        x_i = a + i * h
+        x_j = x_i + h
+        x_k = x_i + 2 * h
+
+        f_i = f(x_i)
+        f_j = f(x_j)
+        f_k = f(x_k)
+
+        ans += (f_i + 4.0 * f_j + f_k)
+
+    return (ans / 3.0) * h
+
+def f(x: float) -> float: 
+    return (np.exp(-x)-1)/(x + x**2)
+
+SipsonAns = Sipson(f, a, b, n)
+
+
+print("Sipson:", SipsonAns)
